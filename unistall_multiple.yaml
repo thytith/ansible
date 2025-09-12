@@ -1,0 +1,13 @@
+---
+- hosts: 192.168.9.247
+  become: true
+  tasks:
+    - name: Remove Apache2 and MariaDB packages
+      ansible.builtin.apt:
+        name:
+          - apache2
+          - mariadb-server
+        state: absent
+        purge: true
+        
+
