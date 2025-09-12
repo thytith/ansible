@@ -42,3 +42,8 @@ state=absent → ensures the package is removed
 I am testing add push to git hub
 my website : https://sandgod.net
 
+
+Use playbook with ansible
+
+ansible-playbook --ask-become-pass install_apache.yaml
+
