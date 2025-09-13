@@ -1,0 +1,29 @@
+---
+- hosts: centosserver
+  become: true
+  tasks:
+
+    - name: install httpd  and Mariadb packages
+      tags: 
+        - apache
+        - db
+
+      ansible.builtin.dnf:
+        name:
+          - httpd
+          - mariadb-server
+        state: present
+
+    - name: Ensure httpd server is started and enabled
+      tags: service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Ensure MariaDB is started and enabled
+      tags: service
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: true

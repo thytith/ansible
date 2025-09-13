@@ -1,0 +1,23 @@
+---
+- hosts: centosserver
+  become: true
+  tasks:
+
+    - name: Remove httpd  and Mariadb packages
+      ansible.builtin.dnf:
+        name:
+          - httpd
+          - mariadb-server
+        state: absent
+
+    - name: Ensure httpd server is started and enabled
+      ansible.builtin.service:
+        name: httpd
+        state: stopped
+        enabled: false
+
+    - name: Ensure MariaDB is started and enabled
+      ansible.builtin.service:
+        name: mariadb
+        state: stopped
+        enabled: false
